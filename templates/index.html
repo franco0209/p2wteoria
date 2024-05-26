@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb Actor Search</title>
+</head>
+<body>
+    <h1>Search for an Actor</h1>
+    <input type="text" id="actorName" placeholder="Enter actor name">
+    <button onclick="searchActor()">Search</button>
+    <h2>Results:</h2>
+    <ul id="results"></ul>
+
+    <script>
+        function searchActor() {
+            const actorName = document.getElementById('actorName').value;
+            fetch(`/search_actor?actor=${actorName}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsList = document.getElementById('results');
+                    resultsList.innerHTML = '';
+                    for (let actor in data) {
+                        const li = document.createElement('li');
+                        li.textContent = `${actor}: ${data[actor].join(', ')}`;
+                        resultsList.appendChild(li);
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
