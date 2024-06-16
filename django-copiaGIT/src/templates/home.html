@@ -9,9 +9,11 @@
     {% block content %}
     <h2> Hola Django</h2>
     <h3> Uso de templates</h3>
-    {{ request.user }}
-    <br>
-    {{ request.user.is_authenticated }}   
+    <p>
+        {{myText}}
+        {{myNumber}}
+    </p>
+    
     {% endblock %}
 
 </body>
