@@ -12,3 +12,11 @@ def personaCreateView(request):
     form=PersonaForm(request.POST or None)
     if form.is_valid():
         form.save()
+        form=PersonaForm()
+
+    context={
+        "form":form
+    }
+    return render(request, "personas/personaCreate.html", context)
+def searchForHelp(request):
+    return render(request, "personas/search.html",{})
