@@ -10,12 +10,12 @@
     <h2> Hola Django</h2>
     <h3> Uso de templates</h3>
     <p>
-        {{myText}}
+        {{myText|upper}}
         {{myNumber}}
     </p>
     <ul>
         {%for myItem in myList%}
-        <li>{{ forloop.counter }}- {{ myItem}}
+        <li>{{ forloop.counter }}- {{ myItem|add:02}}
         {% if myItem == 33 %}
             -Este número es mágico
         {% elif myItem > 50 %}
